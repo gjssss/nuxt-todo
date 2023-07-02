@@ -1,18 +1,15 @@
+<script setup lang="ts"></script>
+
 <template>
-  hello {{ counter }}
-  <button @click="counter++">+1</button>
-  <button @click="handle">请求</button>
-  <button @click="get">获取</button>
+  <div class="screen-container flex-center">
+    <todo-card :width="600" :height="400" />
+  </div>
 </template>
 
-<script setup lang="ts">
-const counter = useState("counter", () => 1);
-async function handle() {
-  const { data } = await useFetch("/api/hello");
-  console.log(data.value);
+<style>
+.screen-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
-async function get() {
-  const { data } = await useFetch("/api/get");
-  console.log(data);
-}
-</script>
+</style>

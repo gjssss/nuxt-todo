@@ -1,0 +1,21 @@
+.btn-group {
+    display: flex;
+}
+
+.btn {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transition: all 0.3s ease-out;
+}
+
+.btn:hover {
+    box-shadow: none;
+}
+
+.btn-group .btn {
+    margin: 0 5px;
+    padding: 5px 15px;
+    border-radius: 3px;
+
+    font-size: 12px;
+}

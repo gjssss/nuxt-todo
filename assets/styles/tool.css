@@ -1,0 +1,32 @@
+.ma {
+    margin: auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.items-center {
+    display: flex;
+    align-items: center;
+}
+
+.hover-shadow {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transition: all 0.3s ease-out;
+}
+
+.hover-shadow:hover {
+    box-shadow: none;
+}
