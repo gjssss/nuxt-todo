@@ -1,18 +1,45 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
-const time = dayjs().format("YY-MM-DD HH:mm");
+import type { cardItem } from "./interface";
+
+const props = defineProps<{
+  data: cardItem;
+}>();
+const emits = defineEmits<{
+  (event: "update:data", value: cardItem): void;
+  (event: "update:isSelect", value: boolean): void;
+  (event: "delete"): void;
+}>();
+
+function updateContentHandle(e: Event) {
+  const d = props.data;
+  d.date = dayjs().format("YY-MM-DD HH:mm");
+  d.content = (e.target as HTMLInputElement).value;
+  emits("update:data", d);
+}
+
+function updateSelectHandle() {
+  const d = props.data;
+  d.isSelect = !d.isSelect;
+  emits("update:data", d);
+}
 </script>
 
 <template>
   <div class="items-container hover-shadow">
-    <div class="todo-item-select flex-center">
-      <div class="selected"></div>
+    <div class="todo-item-select flex-center" @click="updateSelectHandle">
+      <div class="selected" v-show="data.isSelect"></div>
     </div>
     <div class="todo-item-input">
-      <input type="text" placeholder="请输入TODO事件" />
+      <input
+        type="text"
+        :value="data.content"
+        @input="updateContentHandle"
+        placeholder="请输入TODO事件"
+      />
     </div>
-    <div>{{ time }}</div>
-    <div class="btn todo-del">删除</div>
+    <div>{{ data.date }}</div>
+    <div class="btn todo-del" @click="$emit('delete')">删除</div>
   </div>
 </template>
 

@@ -1,9 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineEmits<{
+  (event: "add"): void;
+}>();
+</script>
 
 <template>
   <div class="content-between items-center">
     <div class="items-center">
-      <div class="btn todo-add" />
+      <div class="btn todo-add" @click="$emit('add')" />
       <div class="todo-header"><slot></slot></div>
     </div>
     <div><slot name="header-extra"></slot></div>
