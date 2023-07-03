@@ -87,13 +87,15 @@ function selectAllHandle(val = true) {
       </template>
     </todo-card-header>
     <hr class="todo-hr" />
-    <todo-card-item
-      v-for="(item, index) in todoList"
-      :key="item.id"
-      :data="todoList[index]"
-      @update:data="updateItemHandle"
-      @delete="deleteHandle(item.id)"
-    ></todo-card-item>
+    <div class="todo-item-container">
+      <todo-card-item
+        v-for="(item, index) in todoList"
+        :key="item.id"
+        :data="todoList[index]"
+        @update:data="updateItemHandle"
+        @delete="deleteHandle(item.id)"
+      ></todo-card-item>
+    </div>
   </div>
 </template>
 
@@ -106,10 +108,21 @@ function selectAllHandle(val = true) {
 
   transition: all 0.3s ease-out;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+  display: grid;
+  grid-template-rows: auto auto 1fr;
 }
 
 .todo-hr {
   margin: 20px 0;
   border-color: rgba(255, 255, 255, 0.4);
+}
+
+.todo-item-container {
+  overflow: auto;
+}
+
+.todo-item-container::-webkit-scrollbar {
+  display: none;
 }
 </style>
